@@ -15,7 +15,21 @@ const userSchema = new mongoose.Schema({
   },
   passwordHashAndSalt: {
     type: String
+  },
+  accountType: {
+    type: String,
+    required: true
+  },
+  links: {
+    type: Array
+  },
+  picture: {
+    type: String
+  },
+  photoGallery: {
+    type: Array
   }
+
 });
 
 const User = mongoose.model('User', userSchema);
