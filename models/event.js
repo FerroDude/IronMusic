@@ -1,6 +1,8 @@
+'use strict';
+
 const mongoose = require('mongoose');
 
-const schema = new mongoose.Schema({
+const eventSchema = new mongoose.Schema({
   title: {
     type: String,
     trim: true
@@ -15,6 +17,6 @@ const schema = new mongoose.Schema({
   }
 });
 
-const Event = mongoose.model('Event', schema);
+const Event = mongoose.model('Event', eventSchema);
 
 module.exports = Event;
