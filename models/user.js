@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema({
   },
   accountType: {
     type: String,
+    enum: ['artist', 'default'],
     required: true
   },
   links: {
@@ -29,7 +30,6 @@ const userSchema = new mongoose.Schema({
   photoGallery: {
     type: Array
   }
-
 });
 
 const User = mongoose.model('User', userSchema);
