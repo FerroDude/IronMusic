@@ -8,9 +8,16 @@ require('dotenv').config();
 
 // TicketMaster API Key
 const ticketmasterApiKey = process.env.TICKETMASTER_API_KEY;
+const ticketmasterSecret = process.env.TICKETMASTER_SECRET;
 
 // Require the TicketMaster package to make API calls:
 const TM = require('ticketmaster');
+
+// Setting the TicketMaster API:
+const TMAPI = new TM({
+  clientId: ticketmasterApiKey,
+  clientSecret: ticketmasterSecret
+});
 
 router.get('/', (req, res, next) => {
   res.render('home', { title: 'Iron Music!' });
