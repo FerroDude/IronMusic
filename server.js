@@ -2,6 +2,7 @@
 
 const dotenv = require('dotenv');
 dotenv.config();
+// console.log(process.env);
 
 const debug = require('debug')('ironmusic:server');
 const app = require('./app');
@@ -9,6 +10,8 @@ const mongoose = require('mongoose');
 
 const PORT = parseInt(process.env.PORT, 10);
 const MONGODB_URI = process.env.MONGODB_URI;
+
+const ticketmasterApiKey = process.env.TICKETMASTER_API_KEY;
 
 const terminate = (error) => {
   if (error) debug(error);
