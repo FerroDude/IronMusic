@@ -16,4 +16,8 @@ router.get('/search', (req, res, next) => {
   res.render('search');
 });
 
+router.get('/search-results', (req, res, next) => {
+  res.render('search-results');
+});
+
 module.exports = router;
