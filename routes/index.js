@@ -12,4 +12,8 @@ router.get('/private', routeGuard, (req, res, next) => {
   res.render('private');
 });
 
+router.get('/search', (req, res, next) => {
+  res.render('search');
+});
+
 module.exports = router;
