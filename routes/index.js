@@ -3,6 +3,14 @@
 const express = require('express');
 const router = express.Router();
 const routeGuard = require('./../middleware/route-guard');
+require('dotenv').config();
+// console.log(process.env);
+
+// TicketMaster API Key
+const ticketmasterApiKey = process.env.TICKETMASTER_API_KEY;
+
+// Require the TicketMaster package to make API calls:
+const TM = require('ticketmaster');
 
 router.get('/', (req, res, next) => {
   res.render('home', { title: 'Iron Music!' });
