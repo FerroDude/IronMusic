@@ -13,6 +13,7 @@ const ticketmasterSecret = process.env.TICKETMASTER_SECRET;
 // Require the TicketMaster package to make API calls:
 const TM = require('ticketmaster');
 
+// Other routes
 router.get('/', (req, res, next) => {
   res.render('home', { title: 'Iron Music!' });
 });
