@@ -12,6 +12,9 @@ const basicAuthenticationDeserializer = require('./middleware/basic-authenticati
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
 const baseRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
+const multer = require('multer');
+const cloudinary = require('cloudinary');
+const multerStorageCloudinary = require('multer-storage-cloudinary');
 
 const app = express();
 
