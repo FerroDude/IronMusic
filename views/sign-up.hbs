@@ -1,4 +1,8 @@
-<form action='/authentication/sign-up' method='POST'>
+<form
+  action='/authentication/sign-up'
+  method='POST'
+  enctype='multipart/form-data'
+>
   <label for='input-name'>Name</label>
   <input type='text' id='input-name' name='name' placeholder='Your Name' />
   <label for='input-email'>Email</label>
@@ -20,5 +24,11 @@
     <input type='radio' id='artist' name='isArtist' value='true' />
     <label for='artist'>Artist</label>
   </div>
+
+  <label for='user-picture'>Add your picture</label>
+  <input id='user-picture' type='file' name='picture' accept='image/*' />
+
+  <label for='user-description'>Description</label>
+  <textarea name='description' id='user-description'></textarea>
   <button>Sign Up</button>
 </form>
