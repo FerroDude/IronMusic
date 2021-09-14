@@ -15,6 +15,7 @@ const authenticationRouter = require('./routes/authentication');
 const multer = require('multer');
 const cloudinary = require('cloudinary');
 const multerStorageCloudinary = require('multer-storage-cloudinary');
+const artistRouter = require('./routes/artist');
 
 const app = express();
 
@@ -56,6 +57,7 @@ app.use(bindUserToViewLocals);
 
 app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
+app.use('/artist', artistRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
