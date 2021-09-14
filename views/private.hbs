@@ -3,3 +3,12 @@
 <span><strong>Name</strong>: {{user.name}}</span>
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
+<br />
+<span>
+  {{#if user.isArtist}}
+    <strong>You have an ARTIST account</strong>
+
+  {{else}}
+    <strong>You have a DEFAULT account</strong>
+  {{/if}}
+</span>

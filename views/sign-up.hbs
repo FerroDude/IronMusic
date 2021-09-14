@@ -1,9 +1,24 @@
-<form action="/authentication/sign-up" method="POST">
-  <label for="input-name">Name</label>
-  <input type="text" id="input-name" name="name" placeholder="Your Name" />
-  <label for="input-email">Email</label>
-  <input type="email" id="input-email" name="email" placeholder="Your Email" />
-  <label for="input-password">Password</label>
-  <input type="password" name="password" id="input-password" placeholder="A Strong Password" />
+<form action='/authentication/sign-up' method='POST'>
+  <label for='input-name'>Name</label>
+  <input type='text' id='input-name' name='name' placeholder='Your Name' />
+  <label for='input-email'>Email</label>
+  <input type='email' id='input-email' name='email' placeholder='Your Email' />
+  <label for='input-password'>Password</label>
+  <input
+    type='password'
+    name='password'
+    id='input-password'
+    placeholder='A Strong Password'
+  />
+
+  <div>
+    <h6>Choose your account type</h6>
+
+    <input type='radio' id='default' name='isArtist' value='false' checked />
+    <label for='default'>Default</label>
+
+    <input type='radio' id='artist' name='isArtist' value='true' />
+    <label for='artist'>Artist</label>
+  </div>
   <button>Sign Up</button>
 </form>

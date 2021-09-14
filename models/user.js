@@ -16,9 +16,8 @@ const userSchema = new mongoose.Schema({
   passwordHashAndSalt: {
     type: String
   },
-  accountType: {
-    type: String,
-    enum: ['artist', 'default'],
+  isArtist: {
+    type: Boolean,
     required: true
   },
   links: {
