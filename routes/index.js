@@ -27,7 +27,19 @@ router.get('/search', (req, res, next) => {
 });
 
 router.get('/search-results', (req, res, next) => {
-  res.render('search-results');
+  const searchTerm = req.query.artist.toString;
+  console.log(searchTerm);
+  TM(ticketmasterApiKey)
+    .discovery.v2.event.all(searchTerm)
+    .then((result) => {
+      console.log(result);
+      res.render('search-results', {
+        result
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 module.exports = router;
