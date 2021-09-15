@@ -32,7 +32,7 @@ router.get('/search-results', (req, res, next) => {
   TM(ticketmasterApiKey)
     .discovery.v2.event.all(searchTerm)
     .then((result) => {
-      console.log(result);
+      console.log(result.items);
       res.render('search-results', {
         result
       });
