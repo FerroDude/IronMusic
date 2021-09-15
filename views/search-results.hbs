@@ -3,9 +3,8 @@
 <div class='result-list'>
   {{#each result.items}}
     <p><b>Event name:</b> {{this.name}}</p> 
-    </br>
-
     <p><b>Promoter name:</b> {{this.promoter.name}}</p>
+    <p><b>Timezone:</b> {{this.dates.timezone}}</p>
     </br>
   {{/each}}
 </div>
