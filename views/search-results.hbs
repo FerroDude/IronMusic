@@ -1,7 +1,11 @@
-<h1>These are the artist search results</h1>
+<h1>These are the artist event search results</h1>
 
 <div class='result-list'>
   {{#each result.items}}
-    {{this.name}}
+    <p><b>Event name:</b> {{this.name}}</p> 
+    </br>
+
+    <p><b>Promoter name:</b> {{this.promoter.name}}</p>
+    </br>
   {{/each}}
 </div>
