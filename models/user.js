@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
       type: String
     },
     isArtist: {
-      type: String,
+      type: Boolean,
       required: true
     },
     links: {
