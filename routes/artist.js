@@ -39,8 +39,10 @@ artistRouter.get('/public/:id', (req, res, next) => {
     });
 });
 
-artistRouter.post('/follow/:id', (req, res, next) => {
-  const id = req.params.id;
+artistRouter.post('/follow/:id/:userid', (req, res, next) => {
+  const artist = req.params.id;
+  const follower = req.params.userid;
+  Follow.create({ follower, artist });
   res.redirect('/');
 });
 

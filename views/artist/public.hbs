@@ -7,7 +7,7 @@
 <p>Artist picture <img src='{{result.picture}}' alt='Band picture' /></p>
 
 {{#if user}}
-  <form action='/artist/follow/{{result.id}}' method='POST'>
+  <form action='/artist/follow/{{result.id}}/{{user.id}}' method='POST'>
     <button type='submit'>Follow</button>
   </form>
 {{/if}}
