@@ -20,7 +20,6 @@ artistRouter.get('/search-results', (req, res, next) => {
   const regex = new RegExp(escapeRegex(artist), 'gi');
   User.find({ name: regex, isArtist: true })
     .then((result) => {
-      console.log(result);
       res.render('artist/search-results', { result });
     })
     .catch((error) => {
