@@ -1,1 +1,14 @@
-<h1>artist search results page</h1>
+<div>
+  <form method='GET' action='/artist/search-results'>
+
+    <input type='text' name='artist' id='artist-search' />
+    <button>Search</button>
+  </form>
+</div>
+
+<h3>Your search:<h3>
+{{#each result}}
+  <div>
+    {{name}}
+  </div>
+{{/each}}

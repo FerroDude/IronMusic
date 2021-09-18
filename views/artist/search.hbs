@@ -1,1 +1,20 @@
-<h1>artist search page</h1>
+{{!-- {{#each i have to create a mongoose query to get all artists in the db and pass them to this file, so that they can all be shown and filtered through various filters like alphabetical, number of followers, genre, etc..}} 
+
+loop artists here with image, name
+
+{{/each}} --}}
+
+<div>
+  <form method='GET' action='/artist/search-results'>
+
+    <input type='text' name='artist' id='artist-search' />
+    <button>Search</button>
+  </form>
+</div>
+
+<h3>All Artists:</h3>
+{{#each artists}}
+  <div>
+    {{name}}
+  </div>
+{{/each}}
