@@ -34,7 +34,7 @@ router.get('/search-results', (req, res, next) => {
   TM(ticketmasterApiKey)
     .discovery.v2.event.all(params)
     .then((result) => {
-      console.log(result.items[0].dates.start.localTime);
+      console.log(result.items[0].dates);
       res.render('search-results', {
         result
       });
