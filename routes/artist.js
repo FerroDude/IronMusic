@@ -1,5 +1,6 @@
 'use strict';
 const User = require('../models/user');
+const Follow = require('../models/follow');
 
 const Router = require('express');
 
@@ -29,15 +30,18 @@ artistRouter.get('/search-results', (req, res, next) => {
 
 artistRouter.get('/public/:id', (req, res, next) => {
   const id = req.params.id;
-  console.log(id);
   User.findById(id)
     .then((result) => {
-      console.log(result);
       res.render('artist/public', { result });
     })
     .catch((error) => {
       next(error);
     });
+});
+
+artistRouter.post('/follow/:id', (req, res, next) => {
+  const id = req.params.id;
+  res.redirect('/');
 });
 
 const escapeRegex = (text) => {
