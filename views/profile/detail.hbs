@@ -23,6 +23,12 @@
       <li>Example follower 1</li>
       <li>Example follower 1</li>
     </ul>
+    <form method='POST' action='/upload-file' enctype='multipart/form-data'>
+      <label for='input-attachment'>Music file to upload:</label>
+      <input id='input-attachment' type='file' name='attachment' required />
+
+      <button>Upload your music!</button>
+    </form>
   {{else}}
     <strong>You have a DEFAULT account</strong>
     <br />
