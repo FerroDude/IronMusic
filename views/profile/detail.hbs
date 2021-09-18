@@ -1,6 +1,11 @@
-<h1>Profile / Detail</h1>
+<h1>{{user.name}}'s Profile</h1>
+<div style='background-image: url({{user.picture}})' class='avatar'>
+</div>
 
-<p>This page should only be accessible to authenticated users.</p>
+req.user._id:
+{{req.user}}
+{{!-- {{user._id}} --}}
+
 <span><strong>Name</strong>: {{user.name}}</span>
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
@@ -30,3 +35,9 @@
     </ul>
   {{/if}}
 </span>
+
+{{!-- {{#if ownProfile}} --}}
+<a href='#'>Change Password</a>
+<br />
+<a href='/profile/edit'>Edit My Profile</a>
+{{!-- {{/if}} --}}

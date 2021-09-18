@@ -83,3 +83,21 @@ textarea {
 label {
   margin-bottom: 0.5em;
 }
+
+.avatar {
+  width: 6em;
+  height: 6em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 50px;
+  background-size: cover;
+}
+
+.avatar-mini {
+  width: 2em;
+  height: 2em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 50px;
+  background-size: cover;
+}

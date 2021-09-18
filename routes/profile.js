@@ -10,6 +10,10 @@ const upload = require('./../middleware/file-upload');
 
 const profileRouter = express.Router();
 
+profileRouter.get('/', routeGuard, (req, res, next) => {
+  res.render('profile/detail');
+});
+
 profileRouter.get('/edit', routeGuard, (req, res, next) => {
   res.render('profile/edit');
 });
@@ -33,8 +37,9 @@ profileRouter.post(
       description
     })
       .then((document) => {
+        res.redirect(`/profile`);
         // res.redirect(`/profile/${id}`);
-        res.redirect('./../private');
+        // res.redirect('./../private');
       })
       .catch((error) => {
         next(error);
