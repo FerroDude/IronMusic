@@ -15,6 +15,6 @@ loop artists here with image, name
 <h3>All Artists:</h3>
 {{#each artists}}
   <div>
-    {{name}}
+    <a href='/public/{{this._id}}'>{{name}}</a>
   </div>
 {{/each}}
