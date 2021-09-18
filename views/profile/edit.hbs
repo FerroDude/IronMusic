@@ -1,2 +1,60 @@
-<h1>Profile / Edit</h1>
+<h1>Edit Profile</h1>
 
+<form method='POST' enctype='multipart/form-data'>
+  <label for='input-name'>Name</label>
+  <input
+    type='text'
+    id='input-name'
+    name='name'
+    placeholder='Your Name'
+    value='{{user.name}}'
+    required
+  />
+  <label for='input-email'>Email</label>
+  <input
+    type='email'
+    id='input-email'
+    name='email'
+    placeholder='Your Email'
+    value='{{user.email}}'
+    required
+  />
+  {{! <label for='input-password'>Password</label>
+  <input
+    type='password'
+    name='password'
+    id='input-password'
+    placeholder='A Strong Password'
+  /> }}
+
+  <div>
+    <h6>Choose your account type</h6>
+    {{!-- {{user.isArtist}} --}}
+    {{#if user.isArtist}}
+
+      <input type='radio' id='default' name='isArtist' value='false' />
+      <label for='default'>Default</label>
+
+      <input type='radio' id='artist' name='isArtist' value='true' checked />
+      <label for='artist'>Artist</label>
+    {{else}}
+
+      <input type='radio' id='default' name='isArtist' value='false' checked />
+      <label for='default'>Default</label>
+
+      <input type='radio' id='artist' name='isArtist' value='true' />
+      <label for='artist'>Artist</label>
+    {{/if}}
+
+  </div>
+
+  <label for='user-picture'>Add your picture</label>
+  <input id='user-picture' type='file' name='picture' accept='image/*' />
+
+  <label for='user-description'>Description</label>
+  <textarea
+    name='description'
+    id='user-description'
+  >{{user.description}}</textarea>
+  <button>Edit Profile</button>
+</form>

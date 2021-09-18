@@ -1,2 +1,32 @@
 <h1>Profile / Detail</h1>
 
+<p>This page should only be accessible to authenticated users.</p>
+<span><strong>Name</strong>: {{user.name}}</span>
+<br />
+<span><strong>Email</strong>: {{user.email}}</span>
+<br />
+<p><strong>Description</strong>: {{user.description}}</p>
+<span>
+  {{#if user.isArtist}}
+
+    <strong>You have an Artist account</strong>
+    <br />
+    People who follow you:
+
+    <ul>
+      <li>Example follower 1</li>
+      <li>Example follower 1</li>
+      <li>Example follower 1</li>
+    </ul>
+  {{else}}
+    <strong>You have a DEFAULT account</strong>
+    <br />
+    Artists you follow:
+
+    <ul>
+      <li>Example artist 1</li>
+      <li>Example artist 1</li>
+      <li>Example artist 1</li>
+    </ul>
+  {{/if}}
+</span>

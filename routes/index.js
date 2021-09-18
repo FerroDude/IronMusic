@@ -27,10 +27,12 @@ router.get('/search', (req, res, next) => {
 });
 
 router.get('/search-results', (req, res, next) => {
-  const searchTerm = req.query.artist.toString;
-  console.log(searchTerm);
+  const searchTerm = req.query.artist;
+  const params = {
+    keyword: searchTerm
+  };
   TM(ticketmasterApiKey)
-    .discovery.v2.event.all(searchTerm)
+    .discovery.v2.event.all(params)
     .then((result) => {
       console.log(result.items);
       res.render('search-results', {
