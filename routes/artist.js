@@ -28,6 +28,19 @@ artistRouter.get('/search-results', (req, res, next) => {
     });
 });
 
+artistRouter.get('/public/:id', (req, res, next) => {
+  const id = req.params.id;
+  console.log(id);
+  User.findById(id)
+    .then((result) => {
+      console.log(result);
+      res.render('artist/public', { result });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 const escapeRegex = (text) => {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 };
