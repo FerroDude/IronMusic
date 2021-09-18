@@ -17,8 +17,8 @@ artistRouter.get('/search', (req, res, next) => {
 
 artistRouter.get('/search-results', (req, res, next) => {
   const { artist } = req.query;
-  console.log(artist);
-  User.findOne({ name: artist })
+  const regex = new RegExp(escapeRegex(artist), 'gi');
+  User.find({ name: regex, isArtist: true })
     .then((result) => {
       console.log(result);
       res.render('artist/search-results', { result });
@@ -27,5 +27,9 @@ artistRouter.get('/search-results', (req, res, next) => {
       next(error);
     });
 });
+
+const escapeRegex = (text) => {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+};
 
 module.exports = artistRouter;
