@@ -17,6 +17,7 @@ const cloudinary = require('cloudinary');
 const multerStorageCloudinary = require('multer-storage-cloudinary');
 const artistRouter = require('./routes/artist');
 const profileRouter = require('./routes/profile');
+const eventRouter = require('./routes/event');
 
 const app = express();
 
@@ -60,6 +61,7 @@ app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/artist', artistRouter);
 app.use('/profile', profileRouter);
+app.use('/event', eventRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
