@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
     description: {
       type: String
     },
-    attachment: {
+    audio: {
       type: String
     }
   },

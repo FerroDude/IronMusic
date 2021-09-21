@@ -18,7 +18,7 @@ router.post('/sign-up', upload.single('picture'), (req, res, next) => {
   if (req.file) {
     picture = req.file.path;
   }
-  const attachment = '';
+  const audio = '';
   bcryptjs
     .hash(password, 10)
     .then((passwordHashAndSalt) => {
@@ -29,7 +29,7 @@ router.post('/sign-up', upload.single('picture'), (req, res, next) => {
         isArtist,
         picture,
         description,
-        attachment
+        audio
       });
     })
     .then((user) => {

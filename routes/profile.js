@@ -11,6 +11,7 @@ const upload = require('./../middleware/file-upload');
 const profileRouter = express.Router();
 
 profileRouter.get('/', routeGuard, (req, res, next) => {
+  console.log(req.user);
   res.render('profile/detail');
 });
 
@@ -40,6 +41,29 @@ profileRouter.post(
         res.redirect(`/profile`);
         // res.redirect(`/profile/${id}`);
         // res.redirect('./../private');
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
+);
+
+profileRouter.post(
+  '/upload-file',
+  routeGuard,
+  upload.single('audio'),
+  (req, res, next) => {
+    const id = req.user._id;
+    let audio;
+    if (req.file) {
+      audio = req.file.path;
+    }
+    User.findByIdAndUpdate(id, {
+      audio
+    })
+      .then(() => {
+        res.redirect('/profile');
+        console.log(req.user);
       })
       .catch((error) => {
         next(error);
