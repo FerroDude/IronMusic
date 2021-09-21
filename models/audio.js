@@ -1,14 +1,12 @@
-'use strict';
-
 const mongoose = require('mongoose');
 
 const audioSchema = new mongoose.Schema(
   {
-    receiver: {
+    songtitle: {
       type: String,
       required: true
     },
-    attachment: {
+    audio: {
       type: String,
       required: true
     }
@@ -16,6 +14,6 @@ const audioSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Submission = mongoose.model('Submission', submissionSchema);
+const Audio = mongoose.model('Audio', audioSchema);
 
-module.exports = Submission;
+module.exports = Audio;

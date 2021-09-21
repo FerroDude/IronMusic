@@ -2,6 +2,13 @@
 <div style='background-image: url({{user.picture}})' class='avatar'>
 </div>
 
+<<<<<<< HEAD
+=======
+{{! req.user._id: }}
+{{req.user}}
+{{!-- {{user._id}} --}}
+
+>>>>>>> d46f96d5dbae626074571bf8ea8979685004de42
 <span><strong>Name</strong>: {{user.name}}</span>
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
@@ -24,6 +31,14 @@
       action='/profile/upload-file'
       enctype='multipart/form-data'
     >
+      <label for='song-title'>Song title</label>
+      <input
+        id='song-title'
+        type='text'
+        name='song'
+        placeholder='Title of your song'
+        required
+      />
       <label for='input-attachment'>Music file to upload:</label>
       <input id='input-attachment' type='file' name='audio' required />
 
