@@ -28,6 +28,14 @@
       action='/profile/upload-file'
       enctype='multipart/form-data'
     >
+      <label for='song-title'>Song title</label>
+      <input
+        id='song-title'
+        type='text'
+        name='song'
+        placeholder='Title of your song'
+        required
+      />
       <label for='input-attachment'>Music file to upload:</label>
       <input id='input-attachment' type='file' name='audio' required />
 
