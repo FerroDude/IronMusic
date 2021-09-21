@@ -63,7 +63,6 @@ profileRouter.post(
     })
       .then(() => {
         res.redirect('/profile');
-        console.log(req.user);
       })
       .catch((error) => {
         next(error);
