@@ -48,26 +48,4 @@ profileRouter.post(
   }
 );
 
-profileRouter.post(
-  '/upload-file',
-  routeGuard,
-  upload.single('audio'),
-  (req, res, next) => {
-    const id = req.user._id;
-    let audio;
-    if (req.file) {
-      audio = req.file.path;
-    }
-    User.findByIdAndUpdate(id, {
-      audio
-    })
-      .then(() => {
-        res.redirect('/profile');
-      })
-      .catch((error) => {
-        next(error);
-      });
-  }
-);
-
 module.exports = profileRouter;
