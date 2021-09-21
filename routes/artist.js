@@ -1,5 +1,6 @@
 'use strict';
 const User = require('../models/user');
+const Follow = require('../models/follow');
 
 const Router = require('express');
 
@@ -17,15 +18,36 @@ artistRouter.get('/search', (req, res, next) => {
 
 artistRouter.get('/search-results', (req, res, next) => {
   const { artist } = req.query;
-  console.log(artist);
-  User.findOne({ name: artist })
+  const regex = new RegExp(escapeRegex(artist), 'gi');
+  User.find({ name: regex, isArtist: true })
     .then((result) => {
-      console.log(result);
       res.render('artist/search-results', { result });
     })
     .catch((error) => {
       next(error);
     });
 });
+
+artistRouter.get('/public/:id', (req, res, next) => {
+  const id = req.params.id;
+  User.findById(id)
+    .then((result) => {
+      res.render('artist/public', { result });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+artistRouter.post('/follow/:id/:userid', (req, res, next) => {
+  const artist = req.params.id;
+  const follower = req.params.userid;
+  Follow.create({ follower, artist });
+  res.redirect('/');
+});
+
+const escapeRegex = (text) => {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+};
 
 module.exports = artistRouter;

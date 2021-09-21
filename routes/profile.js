@@ -11,6 +11,7 @@ const upload = require('./../middleware/file-upload');
 const profileRouter = express.Router();
 
 profileRouter.get('/', routeGuard, (req, res, next) => {
+  console.log(req.user);
   res.render('profile/detail');
 });
 

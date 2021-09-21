@@ -6,9 +6,8 @@
   </form>
 </div>
 
-<h3>Your search:<h3>
 {{#each result}}
   <div>
-    {{name}}
+    <a href='/artist/public/{{id}}'>{{name}}</a>
   </div>
 {{/each}}

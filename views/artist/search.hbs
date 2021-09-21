@@ -7,14 +7,18 @@ loop artists here with image, name
 <div>
   <form method='GET' action='/artist/search-results'>
 
-    <input type='text' name='artist' id='artist-search' />
+    <input
+      type='text'
+      name='artist'
+      id='artist-search'
+      placeholder='Artist name'
+    />
     <button>Search</button>
   </form>
 </div>
 
-<h3>All Artists:</h3>
 {{#each artists}}
   <div>
-    {{name}}
+    <a href='/artist/public/{{id}}'>{{name}}</a>
   </div>
 {{/each}}
