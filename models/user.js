@@ -34,9 +34,6 @@ const userSchema = new mongoose.Schema(
     },
     description: {
       type: String
-    },
-    audio: {
-      type: String
     }
   },
   { timestamps: true }
