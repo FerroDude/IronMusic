@@ -7,6 +7,8 @@ const express = require('express');
 const User = require('./../models/user');
 const routeGuard = require('./../middleware/route-guard');
 const upload = require('./../middleware/file-upload');
+const audioUpload = require('./../middleware/audio-file-upload');
+const Audio = require('./../models/audio');
 
 const profileRouter = express.Router();
 
@@ -41,6 +43,26 @@ profileRouter.post(
         res.redirect(`/profile`);
         // res.redirect(`/profile/${id}`);
         // res.redirect('./../private');
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
+);
+
+profileRouter.post(
+  '/upload-audio',
+  audioUpload.single('audio'),
+  (req, res, next) => {
+    const songtitle = req.body.songtitle;
+    const audioURL = req.file.path;
+    Audio.create({
+      songtitle,
+      audio: audioURL
+    })
+      .then((audiofile) => {
+        console.log(audiofile);
+        res.redirect('/profile');
       })
       .catch((error) => {
         next(error);

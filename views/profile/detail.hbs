@@ -2,13 +2,10 @@
 <div style='background-image: url({{user.picture}})' class='avatar'>
 </div>
 
-<<<<<<< HEAD
-=======
 {{! req.user._id: }}
 {{req.user}}
 {{!-- {{user._id}} --}}
 
->>>>>>> d46f96d5dbae626074571bf8ea8979685004de42
 <span><strong>Name</strong>: {{user.name}}</span>
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
@@ -28,14 +25,14 @@
     </ul>
     <form
       method='POST'
-      action='/profile/upload-file'
+      action='/profile/upload-audio'
       enctype='multipart/form-data'
     >
       <label for='song-title'>Song title</label>
       <input
         id='song-title'
         type='text'
-        name='song'
+        name='songtitle'
         placeholder='Title of your song'
         required
       />
