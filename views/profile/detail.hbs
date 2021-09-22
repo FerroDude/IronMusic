@@ -14,7 +14,12 @@
 <span>
   {{#if audio}}
     <figure>
-      <figcaption>Listen to the latest song from {{user.name}}</figcaption>
+      <figcaption>Listen to the latest song from
+        {{user.name}}
+        <br />
+        Song title:
+        {{audio.songtitle}}
+      </figcaption>
       <audio controls src='{{audio.audio}}'>
         Your browser does not support the
         <code>audio</code>
