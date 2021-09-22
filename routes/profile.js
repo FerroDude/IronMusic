@@ -14,7 +14,22 @@ const profileRouter = express.Router();
 
 profileRouter.get('/', routeGuard, (req, res, next) => {
   console.log(req.user);
-  res.render('profile/detail');
+  const userID = req.user._id;
+  console.log(userID);
+  Audio.findOne({ creator: userID })
+    .then((audio) => {
+      if (audio) {
+        console.log('This user has an audio file');
+        console.log(audio);
+        res.render('profile/detail', { audio });
+      } else {
+        console.log('This user has not yet uploaded an audio file');
+        res.render('profile/detail');
+      }
+    })
+    .catch((error) => {
+      next(error);
+    });
 });
 
 profileRouter.get('/edit', routeGuard, (req, res, next) => {

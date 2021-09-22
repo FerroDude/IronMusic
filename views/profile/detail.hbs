@@ -12,6 +12,16 @@
 <br />
 <p><strong>Description</strong>: {{user.description}}</p>
 <span>
+  {{#if audio}}
+    <figure>
+      <figcaption>Listen to the latest song from {{user.name}}</figcaption>
+      <audio controls src='{{audio.audio}}'>
+        Your browser does not support the
+        <code>audio</code>
+        element.
+      </audio>
+    </figure>
+  {{/if}}
   {{#if user.isArtist}}
 
     <strong>You have an Artist account</strong>
@@ -42,6 +52,7 @@
       <button>Upload your music!</button>
     </form>
   {{else}}
+
     <strong>You have a DEFAULT account</strong>
     <br />
     Artists you follow:
