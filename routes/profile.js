@@ -56,9 +56,11 @@ profileRouter.post(
   (req, res, next) => {
     const songtitle = req.body.songtitle;
     const audioURL = req.file.path;
+    const creatorID = req.user._id;
     Audio.create({
       songtitle,
-      audio: audioURL
+      audio: audioURL,
+      creator: creatorID
     })
       .then((audiofile) => {
         console.log(audiofile);

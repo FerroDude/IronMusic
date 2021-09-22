@@ -9,6 +9,10 @@ const audioSchema = new mongoose.Schema(
     audio: {
       type: String,
       required: true
+    },
+    creator: {
+      type: String,
+      required: true
     }
   },
   { timestamps: true }
