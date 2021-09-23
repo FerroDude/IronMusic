@@ -71,6 +71,15 @@
   {{/if}}
 </span>
 
+<div>
+  List all events from this profile
+  {{#each events}}
+  {{> event}}
+  {{/each}}
+</div>
+
+<hr />
+
 {{!-- {{#if ownProfile}} --}}
 <a href='#'>Change Password</a>
 <br />
