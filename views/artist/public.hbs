@@ -4,8 +4,9 @@
 <p>Description: {{result.description}}</p>
 <p>Upcoming events: <i>placeholder</i></p>
 <p>Image gallery: <i>placeholder</i></p>
-<p>Artist picture <img src='{{result.picture}}' alt='Band picture' /></p>
-
+{{#if result.picture}}
+  <p>Artist picture <img src='{{result.picture}}' alt='Band picture' /></p>
+{{/if}}
 {{#if user}}
   <form action='/artist/follow/{{result.id}}/{{user.id}}' method='POST'>
     <button type='submit'>Follow</button>

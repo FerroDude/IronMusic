@@ -1,7 +1,8 @@
 <h1>{{user.name}}'s Profile</h1>
-<div style='background-image: url({{user.picture}})' class='avatar'>
-</div>
-
+{{#if user.picture}}
+  <div style='background-image: url({{user.picture}})' class='avatar'>
+  </div>
+{{/if}}
 {{! req.user._id: }}
 {{req.user}}
 {{!-- {{user._id}} --}}
