@@ -33,7 +33,12 @@ const eventSchema = new mongoose.Schema(
     description: {
       type: String
     },
-    images: [{ type: String }]
+    images: [{ type: String }],
+    creator: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User'
+    }
   },
   { timestamps: true }
 );

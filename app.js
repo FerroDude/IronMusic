@@ -3,6 +3,7 @@
 const path = require('path');
 const express = require('express');
 const createError = require('http-errors');
+const hbs = require('hbs');
 const connectMongo = require('connect-mongo');
 const expressSession = require('express-session');
 const logger = require('morgan');
@@ -23,6 +24,10 @@ const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerHelper('date', (value) => {
+  return `${value.toLocaleDateString()}, ${value.toLocaleTimeString()}`;
+});
+hbs.registerPartials(path.join(__dirname, '/views/partials'));
 
 app.use(serveFavicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(

@@ -8,8 +8,22 @@
   <section>
     <a href='/event/{{_id}}'>
       <h3>{{title}}</h3>
-      <span>{{location.city}}</span>
     </a>
+    <p>When
+      {{date date}}
+    </p>
+    <p>Where Venue {{venue}}</p>
+    <p>
+      {{#each location}}
+        City:
+        {{city}}
+        State/Province:
+        {{state}}
+        Country:
+        {{country}}
+      {{/each}}
+    </p>
+
     <br />
     <a href='{{url}}' target='_blank'>Edit</a>
     {{!-- <span>{{{date publishingDate}}}</span> --}}
