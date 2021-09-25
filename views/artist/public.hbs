@@ -2,6 +2,21 @@
 
 <p>Name: {{artist.name}}</p>
 <p>Description: {{artist.description}}</p>
+{{#each audio}}
+  <figure>
+    <figcaption>Listen to the latest song from
+      {{artist.name}}
+      <br />
+      Song title:
+      {{this.songtitle}}
+    </figcaption>
+    <audio controls src='{{this.audio}}'>
+      Your browser does not support the
+      <code>audio</code>
+      element.
+    </audio>
+  </figure>
+{{/each}}
 <p>Upcoming events: <i>placeholder</i></p>
 <p>Image gallery: <i>placeholder</i></p>
 {{#if artist.picture}}
