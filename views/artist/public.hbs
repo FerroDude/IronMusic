@@ -1,14 +1,21 @@
 <h1>Artist public profile</h1>
 
-<p>Name: {{result.name}}</p>
-<p>Description: {{result.description}}</p>
+<p>Name: {{artist.name}}</p>
+<p>Description: {{artist.description}}</p>
 <p>Upcoming events: <i>placeholder</i></p>
 <p>Image gallery: <i>placeholder</i></p>
-{{#if result.picture}}
-  <p>Artist picture <img src='{{result.picture}}' alt='Band picture' /></p>
+{{#if artist.picture}}
+  <p>Artist picture <img src='{{artist.picture}}' alt='Band picture' /></p>
 {{/if}}
 {{#if user}}
-  <form action='/artist/follow/{{result.id}}/{{user.id}}' method='POST'>
-    <button type='submit'>Follow</button>
-  </form>
+
+  {{#if follow}}
+    <form action='/artist/unfollow/{{artist.id}}/{{user.id}}' method='POST'>
+      <button type='submit'>Unfollow</button>
+    </form>
+  {{else}}
+    <form action='/artist/follow/{{artist.id}}/{{user.id}}' method='POST'>
+      <button type='submit'>Follow</button>
+    </form>
+  {{/if}}
 {{/if}}

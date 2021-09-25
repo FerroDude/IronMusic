@@ -62,6 +62,8 @@ mongoose
   .connect(MONGODB_URI)
   .then(() => {
     debug(`Database connected to URI "${MONGODB_URI}"`);
+    //uncomment line below to clear all database
+    //mongoose.connection.db.dropDatabase();
     initiate();
   })
   .catch((error) => {
