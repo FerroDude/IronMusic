@@ -36,10 +36,11 @@ artistRouter.get('/public/:id', (req, res, next) => {
   User.findById(artistId)
     .then((artistResult) => {
       artist = artistResult;
-      return Audio.find({ creator: artistId });
+      return Audio.find({ creator: artistId }).limit(5);
     })
     .then((audioResult) => {
       audio = audioResult;
+      console.log(audio);
       //The following lines add the follow logic, it should bu ran only in the last .then
       if (!req.session.userId) {
         res.render('artist/public', { artist, audio });

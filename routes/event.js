@@ -8,7 +8,13 @@ const upload = require('./../middleware/file-upload');
 const eventRouter = express.Router();
 
 eventRouter.get('/', routeGuard, (req, res, next) => {
-  res.render('event/list');
+  console.log(req.user);
+  const userID = req.user._id;
+  Event.find({ creator: userID }).then((events) => {
+    console.log('-------here' + events);
+    res.render('event/list', { events });
+    // return Event.find({ creator: userID }).sort({ date: -1 });
+  });
 });
 
 eventRouter.get('/add', routeGuard, (req, res, next) => {
