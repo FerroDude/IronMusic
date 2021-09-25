@@ -22,6 +22,7 @@ profileRouter.get('/', routeGuard, (req, res, next) => {
     .limit(5)
     .then((audioResult) => {
       audio = audioResult;
+      console.log(audio);
       return Follow.find({ follower: user });
     })
     .then((followResult) => {
