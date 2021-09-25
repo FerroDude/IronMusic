@@ -63,10 +63,12 @@
     <br />
     Artists you follow:
 
-    <ul>
-      <li>Example artist 1</li>
-      <li>Example artist 2</li>
-      <li>Example artist 3</li>
+    <ul> 
+      {{#each follow}}
+      <li>
+          <p>{{name}}</p>
+      </li>
+      {{/each}}
     </ul>
   {{/if}}
 </span>

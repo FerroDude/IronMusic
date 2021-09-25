@@ -45,13 +45,11 @@ artistRouter.get('/public/:id', (req, res, next) => {
         res.render('artist/public', { artist, audio });
       } else {
         const user = req.user.id;
-        console.log('User Found');
         return Follow.find({ follower: user, artist: artistId });
       }
     })
     .then((followDocument) => {
       follow = followDocument;
-      console.log('Follow document found');
       res.render('artist/public', { artist, audio, follow });
     })
 
@@ -87,7 +85,6 @@ artistRouter.post('/unfollow/:id', (req, res, next) => {
   const follower = req.user.id;
   Follow.findOneAndDelete({ follower, artist })
     .then(() => {
-      console.log('Folow deleted');
       res.redirect(`/artist/public/${artist}`);
     })
     .catch((error) => {

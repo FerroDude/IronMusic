@@ -9,28 +9,40 @@ const routeGuard = require('./../middleware/route-guard');
 const upload = require('./../middleware/file-upload');
 const audioUpload = require('./../middleware/audio-file-upload');
 const Audio = require('./../models/audio');
+const Follow = require('../models/follow');
 
 const profileRouter = express.Router();
 
 profileRouter.get('/', routeGuard, (req, res, next) => {
-  console.log(req.user);
-  const userID = req.user._id;
-  console.log(userID);
-  Audio.findOne({ creator: userID })
-    .then((audio) => {
-      if (audio) {
-        console.log('This user has an audio file');
-        console.log(audio);
-        res.render('profile/detail', { audio });
-      } else {
-        console.log('This user has not yet uploaded an audio file');
-        res.render('profile/detail');
-      }
+  const user = req.user._id;
+  let audio;
+  let follow;
+
+  Audio.find({ creator: user })
+    .then((audioResult) => {
+      audio = audioResult;
+      return Follow.find({ follower: user });
+    })
+    .then((followResult) => {
+      const artistIds = [];
+      followResult.forEach((artist) => {
+        artistIds.push(artist.artist);
+      });
+      return artistIds;
+    })
+    .then((artistIdResult) => {
+      return User.find({ _id: { $in: artistIdResult } });
+    })
+    .then((artists) => {
+      follow = artists;
+      res.render('profile/detail', { audio, follow });
     })
     .catch((error) => {
       next(error);
     });
 });
+
+//res.render('profile/detail', { audio });
 
 profileRouter.get('/edit', routeGuard, (req, res, next) => {
   res.render('profile/edit');
