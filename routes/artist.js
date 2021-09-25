@@ -74,18 +74,25 @@ artistRouter.get('/public/:id', (req, res, next) => {
       res.render('artist/public', { artist, follow });
     }) */
 
-artistRouter.post('/follow/:id/:userid', (req, res, next) => {
+artistRouter.post('/follow/:id', (req, res, next) => {
   const artist = req.params.id;
-  const follower = req.params.userid;
+  //const follower = req.params.userid;
+  const follower = req.user.id;
   Follow.create({ follower, artist });
   res.redirect(`/artist/public/${artist}`);
 });
 
-artistRouter.post('/unfollow/:id/:userid', (req, res, next) => {
+artistRouter.post('/unfollow/:id', (req, res, next) => {
   const artist = req.params.id;
-  const follower = req.params.userid;
-  Follow.deleteOne({ follower, artist });
-  res.redirect(`/artist/public/${artist}`);
+  const follower = req.user.id;
+  Follow.findOneAndDelete({ follower, artist })
+    .then(() => {
+      console.log('Folow deleted');
+      res.redirect(`/artist/public/${artist}`);
+    })
+    .catch((error) => {
+      next(error);
+    });
 });
 
 const escapeRegex = (text) => {

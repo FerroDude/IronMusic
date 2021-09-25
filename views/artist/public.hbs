@@ -10,11 +10,11 @@
 {{#if user}}
 
   {{#if follow}}
-    <form action='/artist/unfollow/{{artist.id}}/{{user.id}}' method='POST'>
+    <form action='/artist/unfollow/{{artist.id}}' method='POST'>
       <button type='submit'>Unfollow</button>
     </form>
   {{else}}
-    <form action='/artist/follow/{{artist.id}}/{{user.id}}' method='POST'>
+    <form action='/artist/follow/{{artist.id}}' method='POST'>
       <button type='submit'>Follow</button>
     </form>
   {{/if}}
