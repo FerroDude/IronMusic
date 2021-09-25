@@ -18,7 +18,7 @@ profileRouter.get('/', routeGuard, (req, res, next) => {
   let audio;
   let follow;
 
-  Audio.find({ creator: user })
+  Audio.find({ creator: user }.limit(5))
     .then((audioResult) => {
       audio = audioResult;
       return Follow.find({ follower: user });
