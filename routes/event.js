@@ -62,7 +62,17 @@ eventRouter.get('/edit', routeGuard, (req, res, next) => {
 });
 
 eventRouter.get('/:id', routeGuard, (req, res, next) => {
-  res.render('event/detail');
+  const id = req.params.id;
+  Event.findById(id)
+
+    .then((event) => {
+      console.log(event);
+      res.render('event/detail', { event });
+      // return Comment.find({ event: id }).populate('creator');
+    })
+    .catch((error) => {
+      next(error);
+    });
 });
 
 module.exports = eventRouter;

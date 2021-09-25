@@ -1,2 +1,24 @@
-<h1>Event / Detail</h1>
+<h1>{{event.title}}</h1>
+<p>{{event.date}}</p>
 
+<div>
+  <h3>Location</h3>
+  <p>Venue: {{event.venue}}</p>
+  {{#each event.location}}
+    City:
+    {{city}}<br />
+    State/Province:
+    {{state}}<br />
+    Country:
+    {{country}}
+  {{/each}}
+</div>
+
+<div>
+  <h3>Description</h3>
+  {{event.description}}
+</div>
+
+<div>
+  <img src='{{event.images}}' alt='Photos of {{event.title}}' />
+</div>
