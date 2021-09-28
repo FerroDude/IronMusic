@@ -19,16 +19,16 @@
   </head>
   <body>
     <nav>
-      <a href='/'>Home</a>
-      <a href='/artist/search'>Search Artists</a>
+      <i class="ri-music-line"></i> <a href='/'>Home</a>
+      <i class="ri-user-search-line"></i> <a href='/artist/search'>Search Artists</a>
       {{#if user}}
         <span
           style='background-image: url({{user.picture}})'
           class='avatar-mini'
         ></span>
         <a href='/profile'>{{user.name}}'s Profile</a>
-        <a href='/event/'>My Events</a>
-        <form action='/authentication/sign-out' method='POST'>
+        <i class="ri-calendar-line"></i> <a href='/event/'>My Events</a>
+        <i class="ri-shut-down-line"></i> <form action='/authentication/sign-out' method='POST'>
           <button>Sign Out</button>
         </form>
       {{else}}
