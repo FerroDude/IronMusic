@@ -1,6 +1,5 @@
-<h1>Artist public profile</h1>
-
-<p>Name: {{artist.name}}</p>
+<h1>{{artist.name}}</h1>
+<h3>This band has {{followerNumber}} followers </h3>
 <p>Description: {{artist.description}}</p>
 {{#if audio}}
   {{#each audio}}
@@ -26,6 +25,7 @@
 {{#if artist.picture}}
   <p>Artist picture <img src='{{artist.picture}}' alt='Band picture' /></p>
 {{/if}}
+
 {{#if user}}
 
   {{#if follow}}

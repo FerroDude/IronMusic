@@ -33,6 +33,7 @@ artistRouter.get('/public/:id', (req, res, next) => {
   let artist;
   let follow;
   let audio;
+  let followerNumber;
   User.findById(artistId)
     .then((artistResult) => {
       artist = artistResult;
@@ -40,8 +41,10 @@ artistRouter.get('/public/:id', (req, res, next) => {
     })
     .then((audioResult) => {
       audio = audioResult;
-      console.log(audio);
-      //The following lines add the follow logic, it should bu ran only in the last .then
+      return Follow.find({ artist: artistId });
+    })
+    .then((artistFollowers) => {
+      followerNumber = artistFollowers.length;
       if (!req.session.userId) {
         res.render('artist/public', { artist, audio });
       } else {
@@ -51,27 +54,25 @@ artistRouter.get('/public/:id', (req, res, next) => {
     })
     .then((followDocument) => {
       follow = followDocument;
-      res.render('artist/public', { artist, audio, follow });
+      res.render('artist/public', { artist, audio, follow, followerNumber });
     })
-
     .catch((error) => {
       next(error);
     });
 });
 
-/* if (!req.session.userId) {
-        res.render('artist/public', { artist });
+//The following lines add the follow logic, it should bu ran only in the last .then
+/*       if (!req.session.userId) {
+        res.render('artist/public', { artist, audio });
       } else {
         const user = req.user.id;
-        console.log('User Found');
-        return Follow.find({ follower: user, artist: id });
+        return Follow.find({ follower: user, artist: artistId });
       }
     })
     .then((followDocument) => {
       follow = followDocument;
-      console.log('Follow document found');
-      res.render('artist/public', { artist, follow });
-    }) */
+      res.render('artist/public', { artist, audio, follow });
+    */
 
 artistRouter.post('/follow/:id', (req, res, next) => {
   const artist = req.params.id;
