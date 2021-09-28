@@ -75,7 +75,6 @@ artistRouter.get('/public/:id', (req, res, next) => {
 
 artistRouter.post('/follow/:id', (req, res, next) => {
   const artist = req.params.id;
-  //const follower = req.params.userid;
   const follower = req.user.id;
   Follow.create({ follower, artist });
   res.redirect(`/artist/public/${artist}`);

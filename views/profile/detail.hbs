@@ -39,11 +39,12 @@
     <br />
     People who follow you:
 
-    <ul>
-      <li>Example follower 1</li>
-      <li>Example follower 2</li>
-      <li>Example follower 3</li>
-    </ul>
+  <ul>
+    {{#each followers}} 
+      <p>{{name}}</p>
+    {{/each}}
+  </ul>
+   
     <form
       method='POST'
       action='/profile/upload-audio'
@@ -82,6 +83,7 @@
   List all events from this profile
   {{#each events}}
   {{> event}}
+  {{title}}
   {{/each}}
 </div>
 

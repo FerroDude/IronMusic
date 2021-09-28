@@ -17,6 +17,7 @@ profileRouter.get('/', routeGuard, (req, res, next) => {
   const user = req.user._id;
   let audio;
   let follow;
+  let followers;
 
   Audio.find({ creator: user })
     .limit(5)
@@ -36,12 +37,29 @@ profileRouter.get('/', routeGuard, (req, res, next) => {
     })
     .then((artists) => {
       follow = artists;
-      res.render('profile/detail', { audio, follow });
+      return Follow.find({ artist: user });
+      //res.render('profile/detail', { audio, follow });
+    })
+    .then((artistResult) => {
+      const followersIds = [];
+      artistResult.forEach((follower) => {
+        followersIds.push(follower.follower);
+      });
+      return followersIds;
+    })
+    .then((followersIdResult) => {
+      return User.find({ _id: { $in: followersIdResult } });
+    })
+    .then((finalFollowers) => {
+      followers = finalFollowers;
+      res.render('profile/detail', { audio, follow, followers });
     })
     .catch((error) => {
       next(error);
     });
 });
+
+//res.render('profile/detail', { audio, follow });
 
 profileRouter.get('/edit', routeGuard, (req, res, next) => {
   res.render('profile/edit');
