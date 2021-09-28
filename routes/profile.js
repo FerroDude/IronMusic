@@ -38,7 +38,6 @@ profileRouter.get('/', routeGuard, (req, res, next) => {
     .then((artists) => {
       follow = artists;
       return Follow.find({ artist: user });
-      //res.render('profile/detail', { audio, follow });
     })
     .then((artistResult) => {
       const followersIds = [];
@@ -58,8 +57,6 @@ profileRouter.get('/', routeGuard, (req, res, next) => {
       next(error);
     });
 });
-
-//res.render('profile/detail', { audio, follow });
 
 profileRouter.get('/edit', routeGuard, (req, res, next) => {
   res.render('profile/edit');
