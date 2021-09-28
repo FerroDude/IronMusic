@@ -28,6 +28,12 @@
           <code>audio</code>
           element.
         </audio></div>
+        <div><form
+      method='POST'
+      action='/profile/delete-audio'>
+      <input type="hidden" name="audioId" value="{{_id}}">
+      <button>Delete this song</button>
+    </form></div>
 </div>
       {{/each}}
     </figure>

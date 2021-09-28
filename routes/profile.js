@@ -116,4 +116,20 @@ profileRouter.post(
   }
 );
 
+profileRouter.post('/delete-audio', (req, res, next) => {
+  const songId = req.body.audioId;
+  console.log(req.body);
+  console.log(req.body.audioId);
+  Audio.findOneAndDelete({
+    _id: songId
+  })
+    .then(() => {
+      console.log('Audio file deleted successfully');
+      res.redirect('/profile');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 module.exports = profileRouter;
