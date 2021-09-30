@@ -79,4 +79,20 @@ eventRouter.get('/:id', routeGuard, (req, res, next) => {
     });
 });
 
+eventRouter.post('/delete', (req, res, next) => {
+  const eventId = req.body.eventId;
+  console.log(req.body);
+  console.log(req.body.eventId);
+  Event.findOneAndDelete({
+    _id: eventId
+  })
+    .then(() => {
+      console.log('Event deleted successfully');
+      res.redirect('/profile');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 module.exports = eventRouter;
