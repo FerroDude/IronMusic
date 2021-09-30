@@ -20,7 +20,32 @@
   <h4>No songs have been uploaded yet</h4>
 {{/if}}
 
-<p>Upcoming events: <i>placeholder</i></p>
+<p>Upcoming events:</p>
+{{#if events}}
+{{#each events}}
+  <section>
+    <a href='/event/{{_id}}'>
+      <h3>{{title}}</h3>
+    </a>
+    <p>When
+      {{date date}}
+    </p>
+    <p>Where Venue {{venue}}</p>
+    <p>
+      {{#each location}}
+        City:
+        {{city}}
+        State/Province:
+        {{state}}
+        Country:
+        {{country}}
+      {{/each}}
+    </p>
+{{/each}}
+{{else}}
+<em>{{artist.name}} doesn't have any events</em>
+{{/if}}
+
 <p>Image gallery: <i>placeholder</i></p>
 {{#if artist.picture}}
   <p>Artist picture <img src='{{artist.picture}}' alt='Band picture' /></p>

@@ -56,8 +56,8 @@ profileRouter.get('/', routeGuard, (req, res, next) => {
       return Event.find({ creator: user });
     })
     .then((eventResult) => {
-      console.log(eventResult);
       events = eventResult;
+
       res.render('profile/detail', { audio, follow, followers, events });
     })
     .catch((error) => {

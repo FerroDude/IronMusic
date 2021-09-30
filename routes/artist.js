@@ -2,6 +2,7 @@
 const User = require('../models/user');
 const Follow = require('../models/follow');
 const Audio = require('../models/audio');
+const Event = require('../models/event');
 const Router = require('express');
 
 const artistRouter = new Router();
@@ -34,6 +35,7 @@ artistRouter.get('/public/:id', (req, res, next) => {
   let follow;
   let audio;
   let followerNumber;
+  let events;
   User.findById(artistId)
     .then((artistResult) => {
       artist = artistResult;
@@ -45,6 +47,11 @@ artistRouter.get('/public/:id', (req, res, next) => {
     })
     .then((artistFollowers) => {
       followerNumber = artistFollowers.length;
+      return Event.find({ creator: artistId });
+    })
+    .then((eventResult) => {
+      events = eventResult;
+      console.log(eventResult);
       if (!req.session.userId) {
         res.render('artist/public', { artist, audio });
       } else {
@@ -54,7 +61,13 @@ artistRouter.get('/public/:id', (req, res, next) => {
     })
     .then((followDocument) => {
       follow = followDocument;
-      res.render('artist/public', { artist, audio, follow, followerNumber });
+      res.render('artist/public', {
+        artist,
+        audio,
+        follow,
+        followerNumber,
+        events
+      });
     })
     .catch((error) => {
       next(error);
@@ -71,7 +84,7 @@ artistRouter.get('/public/:id', (req, res, next) => {
     })
     .then((followDocument) => {
       follow = followDocument;
-      res.render('artist/public', { artist, audio, follow });
+      res.render('artist/public', { artist, audio, follow, followerNumber });
     */
 
 artistRouter.post('/follow/:id', (req, res, next) => {
