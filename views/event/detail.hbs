@@ -43,6 +43,7 @@ function startMap() {
     lat: {{ event.location.[0].coordinates.[0] }},
     lng: {{ event.location.[0].coordinates.[1] }}
   };
+  console.log(eventCoordinates);
   
   const map = new google.maps.Map(
     document.getElementById('map'),
@@ -52,9 +53,7 @@ function startMap() {
     });
 
   const marker = new google.maps.Marker({
-    position: {
-        eventCoordinates
-      },
+    position: eventCoordinates,
     map: map,
     title: {{ event.venue }}
     });   
