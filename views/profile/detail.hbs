@@ -15,14 +15,14 @@
 <span>
   {{#if audio}}
     <figure>
-      <figcaption>Listen to the latest songs from
-        {{user.name}}
-        </br>
-<div>
+      <figcaption>Listen to the latest songs from {{user.name}} </figcaption> 
+        
+        
+  
         {{#each audio}}
-
+<div>
           Song title: {{songtitle}}
-          </figcaption> 
+         
           <div><audio controls src='{{audio}}'>
           Your browser does not support the
           <code>audio</code>
@@ -71,6 +71,17 @@
 
       <button>Upload your music!</button>
     </form>
+
+    <div>
+
+
+ Your Events:
+  {{#each events}}
+  {{> event}}
+  {{/each}}
+</div>
+
+
   {{else}}
 
     <strong>You have a DEFAULT account</strong>
@@ -87,15 +98,9 @@
   {{/if}}
 </span>
 
-<div>
-  List all events from this profile
-  {{#each events}}
-  {{> event}}
-  {{title}}
-  {{/each}}
-</div>
 
-<hr />
+
+<hr>
 
 {{!-- {{#if ownProfile}} --}}
 <a href='#'>Change Password</a>

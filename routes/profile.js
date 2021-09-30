@@ -5,6 +5,7 @@ const express = require('express');
 
 // const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
+const Event = require('../models/event');
 const routeGuard = require('./../middleware/route-guard');
 const upload = require('./../middleware/file-upload');
 const audioUpload = require('./../middleware/audio-file-upload');
@@ -18,6 +19,7 @@ profileRouter.get('/', routeGuard, (req, res, next) => {
   let audio;
   let follow;
   let followers;
+  let events;
 
   Audio.find({ creator: user })
     .limit(5)
@@ -51,12 +53,19 @@ profileRouter.get('/', routeGuard, (req, res, next) => {
     })
     .then((finalFollowers) => {
       followers = finalFollowers;
-      res.render('profile/detail', { audio, follow, followers });
+      return Event.find({ creator: user });
+    })
+    .then((eventResult) => {
+      console.log(eventResult);
+      events = eventResult;
+      res.render('profile/detail', { audio, follow, followers, events });
     })
     .catch((error) => {
       next(error);
     });
 });
+
+//res.render('profile/detail', { audio, follow, followers });
 
 profileRouter.get('/edit', routeGuard, (req, res, next) => {
   res.render('profile/edit');
