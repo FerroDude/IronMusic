@@ -19,6 +19,8 @@ const multerStorageCloudinary = require('multer-storage-cloudinary');
 const artistRouter = require('./routes/artist');
 const profileRouter = require('./routes/profile');
 const eventRouter = require('./routes/event');
+// const hbsJson = require('hbs-json');
+// hbs.registerHelper('json', hbsJson);
 
 const app = express();
 

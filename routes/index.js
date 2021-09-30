@@ -13,6 +13,9 @@ const ticketmasterSecret = process.env.TICKETMASTER_SECRET;
 // Require the TicketMaster package to make API calls:
 const TM = require('ticketmaster');
 
+// Gogle Maps API Key
+const googleApiKey = process.env.GOOGLE_MAPS_API_KEY;
+
 // Other routes
 router.get('/', (req, res, next) => {
   res.render('home', { title: 'Iron Music!' });

@@ -44,6 +44,20 @@
    </footer>
  </div>
     <!-- JavaScript Bundle with Popper -->
+
+
+<script>
+  let map; function initMap() { map = new
+  google.maps.Map(document.getElementById("map"), { center: { lat: 38.75, lng:
+  -9.15 }, zoom: 14 }); const marker = new google.maps.Marker({ position: { lat:
+  38.75, lng: -9.15 }, map: map }); setTimeout(() => { // this remove marker
+  from map marker.setMap(null); }, 3000); const userAddedMarkers =[];
+  map.addListener('click', (event) => { console.log(event); const lat =
+  event.latLng.lat(); const lng = event.latLng.lng(); console.log(lat, lng);
+  const newMarker = new google.maps.Marker({ position: {lat, long}, map });
+  userAddedMarkers.push(userAddedMarkers); }) }
+</script>
+
     <script
       src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js'
       integrity='sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ'

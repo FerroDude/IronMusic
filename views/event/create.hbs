@@ -1,3 +1,7 @@
+<style>
+  #space-creation-map { width: 100%; height: 20em; }
+</style>
+
 <h1>Add your event</h1>
 
 <form method='POST' enctype='multipart/form-data'>
@@ -13,6 +17,8 @@
 
   <p>Location</p>
 
+  <div id='space-creation-map'></div>
+
   <label for='event-city'>City</label>
   <input id='event-city' name='city' type='text' placeholder='New York City' />
 
@@ -22,8 +28,8 @@
   <label for='event-country'>Country</label>
   <input id='event-country' name='country' type='text' placeholder='USA' />
 
-  <input id='event-lat' name='latitude' type='hidden' value='1' />
-  <input id='event-lon' name='longitude' type='hidden' value='2' />
+  <input id='event-lat' name='latitude' type='hidden' required />
+  <input id='event-lon' name='longitude' type='hidden' required />
 
   <label for='event-venue'>Venue</label>
   <input id='event-venue' name='venue' type='text' name='' id='' />
@@ -41,3 +47,33 @@
   <button>Add Event</button>
 
 </form>
+
+
+<script>
+  const latitudeInputElement = document.getElementById('event-lat');
+  const longitudeInputElement = document.getElementById('event-lon');
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById('space-creation-map'), {
+      center: { lat: 38.75, lng: -9.15 },
+      zoom: 10
+    });
+    let marker;
+    map.addListener('click', (event) => {
+      if (marker) {
+        marker.setMap(null);
+      }
+      const latitude = event.latLng.lat();
+      const longitude = event.latLng.lng();
+      marker = new google.maps.Marker({
+        position: { lat: latitude, lng: longitude },
+        map: map
+      });
+      latitudeInputElement.value = latitude;
+      longitudeInputElement.value = longitude;
+    })
+  }
+</script>
+
+<script
+  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCyRTqXpFmBnF-VF4P1qRJqMCATqs4dKDg&callback=initMap'
+></script>

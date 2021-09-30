@@ -7,6 +7,9 @@ const upload = require('./../middleware/file-upload');
 
 const eventRouter = express.Router();
 
+// Gogle Maps API Key
+const googleApiKey = process.env.GOOGLE_MAPS_API_KEY;
+
 eventRouter.get('/', routeGuard, (req, res, next) => {
   console.log(req.user);
   const userID = req.user._id;
@@ -66,7 +69,8 @@ eventRouter.get('/:id', routeGuard, (req, res, next) => {
   Event.findById(id)
 
     .then((event) => {
-      console.log(event);
+      // console.log(event);
+      // console.log(event.location[0].coordinates[1]);
       res.render('event/detail', { event });
       // return Comment.find({ event: id }).populate('creator');
     })

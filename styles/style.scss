@@ -40,6 +40,11 @@ nav {
   i {
     padding: 0.5em;
   }
+  form {
+    button {
+      margin: 0 auto;
+    }
+  }
 }
 
 h1,
@@ -122,4 +127,9 @@ label {
   align-items: center;
   align-content: center;
   background-color: #f7f4f4fa;
+}
+
+#map {
+  height: 500px;
+  width: 100%;
 }
