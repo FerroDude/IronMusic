@@ -28,4 +28,8 @@
     <a href='{{url}}' target='_blank'>Edit</a>
     {{!-- <span>{{{date publishingDate}}}</span> --}}
   </section>
+  <div><form method='POST' action='/event/delete'>
+      <input type='hidden' name='eventId' value='{{_id}}' />
+      <button>Delete this event</button>
+    </form></div>
 </article>
