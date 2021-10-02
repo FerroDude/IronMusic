@@ -52,7 +52,7 @@ eventRouter.post(
       creator: req.user._id
     })
       .then(() => {
-        res.redirect('/');
+        res.redirect('/event');
       })
       .catch((error) => {
         next(error);
