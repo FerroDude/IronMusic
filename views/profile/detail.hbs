@@ -15,10 +15,7 @@
 <span>
   {{#if audio}}
     <figure>
-      <figcaption>Listen to the latest songs from {{user.name}} </figcaption> 
-        
-        
-  
+      <h5>Songs you have uploaded:</h5>
         {{#each audio}}
 <div>
           Song title: {{songtitle}}
@@ -40,10 +37,8 @@
     
   {{/if}}
   {{#if user.isArtist}}
-
-    <strong>You have an Artist account</strong>
-    <br />
-    People who follow you:
+   
+    <h5> People who follow you:</h5>
 
   <ul>
     {{#each followers}} 
@@ -51,6 +46,9 @@
        <p>{{name}}</p>
     </li>
     {{/each}}
+    <br>
+
+    <h5>Upload a Song!</h5>
   </ul>
    
     <form
@@ -74,18 +72,9 @@
 
     <div>
 
-
- Your Events:
-  {{#each events}}
-  {{> event}}
-  {{/each}}
-</div>
-
-
+<h4> <i class="ri-calendar-line p-1"></i> <a href='/event/'>My Events</a></h4>
   {{else}}
 
-    <strong>You have a DEFAULT account</strong>
-    <br />
     Artists you follow:
 
     <ul> 
@@ -103,7 +92,9 @@
 <hr>
 
 {{!-- {{#if ownProfile}} --}}
-<a href='#'>Change Password</a>
 <br />
 <a href='/profile/edit'>Edit My Profile</a>
+   <form action='/authentication/sign-out' method='POST'>
+           <button>Sign Out</button>
+        </form>
 {{!-- {{/if}} --}}

@@ -7,18 +7,19 @@
     />
     <title>{{title}}</title>
     {{!-- Remix Icons --}}
+   
+  
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- CSS only -->
-    <link
-      href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css'
-      rel='stylesheet'
-      integrity='sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU'
-      crossorigin='anonymous'
-    />
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link rel='stylesheet' href='/styles/style.css' />
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav>
+ {{!--    <nav>
       <i class="ri-music-line"></i> <a href='/'>Home</a>
       <i class="ri-user-search-line"></i> <a href='/artist/search'>Search Artists</a>
       {{#if user}}
@@ -30,14 +31,113 @@
         {{#if user.isArtist}}
         <i class="ri-calendar-line"></i> <a href='/event/'>My Events</a>
         {{/if}}
-        <i class="ri-shut-down-line"></i> <form action='/authentication/sign-out' method='POST'>
-          <button>Sign Out</button>
+        <i class="ri-shut-down-line"></i>
+        <form action='/authentication/sign-out' method='POST'>
+           <button>Sign Out</button>
         </form>
       {{else}}
         <i class="ri-login-box-line"></i> <a href='/authentication/sign-in'>Sign In</a>
         <i class="ri-user-add-line"></i> <a href='/authentication/sign-up'>Sign Up</a>
       {{/if}}
-    </nav>
+    </nav> --}}
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+       IRONMUSIC
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+           
+         </i> <a class="nav-link" href="/"><i class="ri-music-line p-1"></i></i>Home</a>  
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/artist/search"><i class="ri-user-search-line p-1"></i>Search Artists</a>
+        </li>
+       
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <!-- Icon -->
+      <a class="text-reset me-3" href="#">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+
+   {{!-- Sign In and Sign up --}}
+   {{#if user}}
+ <!-- Avatar -->
+
+
+      <a
+        class=" d-flex align-items-center hidden-arrow"
+        href="/profile"
+        id="navbarDropdownMenuLink"
+        role="button"
+        data-mdb-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="{{user.picture}}"
+          class="rounded-circle p-1"
+          height="40"
+          alt=""
+          loading="lazy"
+        />
+      </a>
+      
+
+     
+      
+  {{else}} 
+  
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+           
+         </i> <a class="nav-link" href="/authentication/sign-in"><i class="ri-login-box-line  p-1"></i></i>Sign In</a>  
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/authentication/sign-up"><i class="ri-user-add-line p-1"></i>Sign Up</a>
+        </li>
+      </ul>
+   {{/if}}
+
+  
+
+
+     
+    </div>
+    <!-- Right elements -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+
+
+
     {{{body}}}
     <div id="last-content"></div>
 </div>
@@ -58,7 +158,7 @@
   event.latLng.lat(); const lng = event.latLng.lng(); console.log(lat, lng);
   const newMarker = new google.maps.Marker({ position: {lat, long}, map });
   userAddedMarkers.push(userAddedMarkers); }) }
-</script>
+</>
 
     <script
       src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js'
@@ -67,5 +167,8 @@
     ></script>
     <script src='/scripts/script.js'></script>
     {{!-- <script src='ticketmaster-2.0.4.js'></script> --}}
+
+    <script></script>
+
   </body>
 </html>

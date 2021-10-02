@@ -27,7 +27,8 @@ const userSchema = new mongoose.Schema(
       type: Array
     },
     picture: {
-      type: String
+      type: String,
+      default: '/images/default'
     },
     photoGallery: {
       type: Array
