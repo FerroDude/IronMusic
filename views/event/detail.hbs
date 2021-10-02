@@ -20,7 +20,7 @@
     {{state}}<br />
     Country:
     {{country}}
-    Lat{{coordinates.[0]}} Long {{coordinates.[1]}} 
+    {{!-- Lat{{coordinates.[0]}} Long {{coordinates.[1]}}  --}}
   {{/each}}
 </div>
 
@@ -29,9 +29,9 @@
   {{event.description}}
 </div>
 
-HERE
+{{!-- HERE
 {{ event.location.[0].coordinates.[0] }}
-{{ event.location.[0].coordinates.[1] }}
+{{ event.location.[0].coordinates.[1] }} --}}
 
 <div id='map'>
 </div>
@@ -40,26 +40,27 @@ HERE
 
 function startMap() {
   const eventCoordinates = {
-    lat: {{ event.location.[0].coordinates.[0] }},
-    lng: {{ event.location.[0].coordinates.[1] }}
+    lat: {{ event.location.[0].coordinates.[1] }},
+    lng: {{ event.location.[0].coordinates.[0] }}
   };
   console.log(eventCoordinates);
   
   const map = new google.maps.Map(
     document.getElementById('map'),
     {
-      zoom: 9,
+      zoom: 12,
       center: eventCoordinates
     });
 
-  const marker = new google.maps.Marker({
+  const marker = new google.maps.Marker(
+  {
     position: eventCoordinates,
     map: map,
-    title: {{ event.venue }}
+    title: "{{ event.venue }}"
     });   
 }
 
-startMap();
+// startMap();
 
 </script>
 
