@@ -73,6 +73,25 @@ eventRouter.get('/edit/:id', routeGuard, (req, res, next) => {
     });
 });
 
+eventRouter.post('/edit/:id', routeGuard, (req, res, next) => {
+  const { title, venue, date, description } = req.body;
+  console.log({ title, venue, date, description });
+  const eventId = req.params.id;
+  console.log(eventId);
+  Event.findByIdAndUpdate(eventId, {
+    title,
+    venue,
+    date,
+    description
+  })
+    .then(() => {
+      res.redirect('/event');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 eventRouter.get('/:id', routeGuard, (req, res, next) => {
   const id = req.params.id;
   Event.findById(id)

@@ -1,18 +1,19 @@
 <h1>Edit event</h1>
 
-<form method='POST' enctype='multipart/form-data'>
+<form method='POST'>
+
+  {{!-- <input type='hidden' name='eventId' value='{{event._id}}' /> --}}
 
   <label for='event-title'>Title</label>
   <input
     id='event-title'
     name='title'
     type='text'
-    placeholder='Amazing concert in Madison Square Garden'
-    value='{{event.title}}'
+    placeholder='{{event.title}}'
     required
   />
 
-  <p>Location</p>
+  {{!-- <p>Location</p>
   <label for='event-city'>City</label>
   <input
     id='event-city'
@@ -20,6 +21,7 @@
     type='text'
     placeholder='New York City'
     value='{{event.location.0.city}}'
+    required
   />
 
   <label for='event-state'>State / Province</label>
@@ -28,6 +30,8 @@
     name='state'
     type='text'
     placeholder='{{event.location.0.state}}'
+    value='{{event.location.0.state}}'
+    required
   />
 
   <label for='event-country'>Country</label>
@@ -36,10 +40,12 @@
     name='country'
     type='text'
     placeholder='{{event.location.0.country}}'
-  />
+    value='{{event.location.0.country}}'
+    required
+  /> --}}
 
-  <input id='event-lat' name='latitude' type='hidden' value='1' />
-  <input id='event-lon' name='longitude' type='hidden' value='2' />
+  {{! <input id='event-lat' name='latitude' type='hidden' value='1' />
+  <input id='event-lon' name='longitude' type='hidden' value='2' /> }}
 
   <label for='event-venue'>Venue</label>
   <input
@@ -49,21 +55,23 @@
     name=''
     id=''
     placeholder='{{event.venue}}'
+    required
   />
 
   <label for='event-date'>Event Date</label>
-  <input id='event-date' name='date' type='date' name='' id='' />
+  <input id='event-date' name='date' type='date' name='' id='' required />
 
   <label for='event-description'>Description</label>
   <textarea
     id='event-description'
     name='description'
     placeholder='{{event.description}}'
+    required
   ></textarea>
 
-  <label for='event-images'>Event Images</label>
+  {{! <label for='event-images'>Event Images</label> }}
   {{! <input type='text' name='images' id='event-images' /> }}
-  <input type='file' name='images' id='event-images' />
+  {{! <input type='file' name='images' id='event-images' /> }}
 
   <button>Edit Event</button>
 
