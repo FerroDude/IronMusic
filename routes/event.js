@@ -60,7 +60,7 @@ eventRouter.post(
   }
 );
 
-eventRouter.get('/edit', routeGuard, (req, res, next) => {
+eventRouter.get('/edit/:id', routeGuard, (req, res, next) => {
   res.render('event/edit');
 });
 
