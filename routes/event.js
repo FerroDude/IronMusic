@@ -61,7 +61,16 @@ eventRouter.post(
 );
 
 eventRouter.get('/edit/:id', routeGuard, (req, res, next) => {
-  res.render('event/edit');
+  const eventId = req.params.id;
+  console.log(eventId);
+  Event.findById(eventId)
+    .then((event) => {
+      console.log(event);
+      res.render('event/edit', { event });
+    })
+    .catch((error) => {
+      next(error);
+    });
 });
 
 eventRouter.get('/:id', routeGuard, (req, res, next) => {
