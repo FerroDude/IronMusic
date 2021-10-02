@@ -191,3 +191,8 @@ label {
 .nav div.main_list ul li a:hover {
   color: #00e676;
 }
+
+.artists {
+  display: flex;
+  flex-wrap: wrap;
+}

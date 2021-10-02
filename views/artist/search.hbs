@@ -12,7 +12,14 @@
 </div>
 
 {{#each artists}}
-  <div>
-    <a href='/artist/public/{{id}}'>{{name}}</a>
+  <div class='card' style='width: 18rem;'>
+    <img class='card-img-top' src='{{picture}}' alt='Artist Picture' />
+    <div class='card-body'>
+      <h5 class='card-title'>{{name}}</h5>
+      <p class='card-text'>{{description}}</p>
+      <a href='/artist/public/{{id}}' class='btn btn-primary'>Check them out</a>
+    </div>
   </div>
 {{/each}}
+
+<a href='/artist/public/{{id}}'>{{name}}</a>
